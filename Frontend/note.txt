@@ -1,0 +1,36 @@
+------------Database Queries-------------
+CREATE DATABASE golang_todo_app;
+USE golang_todo_app;
+CREATE TABLE tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    status ENUM('pending', 'in-progress', 'completed') DEFAULT 'pending',
+    due_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+--------------Backend Setup-------------
+//Initialize the Go module
+go mod init todo-app
+
+//For MySQL database connections, we’ll install the MySQL Driver to use the go-sql-driver/mysql package.
+go get -u github.com/go-sql-driver/mysql
+
+go get github.com/rs/cors
+
+
+------------Frontend Setup--------------
+//to create a new React app
+npx create-react-app Frontend
+
+// We’ll use Axios to make HTTP requests from the frontend to the backend API.
+npm install axios
+
+//React Router will help us manage navigation
+npm install react-router-dom
+
+
+
